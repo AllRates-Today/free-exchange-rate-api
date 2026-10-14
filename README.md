@@ -54,7 +54,7 @@ That's it. No sign-up, no key, no card.
 - [Quick start](#quick-start)
 - [Keyless endpoints](#keyless-endpoints)
 - [Drop-in replacements for dead or paid APIs](#drop-in-replacements-for-dead-or-paid-apis)
-- [Static JSON on a CDN](#static-json-on-a-cdn)
+- [Static JSON on a CDN](#static-json-files)
 - [AI agents and MCP](#ai-agents-and-mcp)
 - [Code examples](#code-examples)
 - [When you need a key](#when-you-need-a-key)
@@ -151,16 +151,16 @@ curl "https://allratestoday.com/api/compat/fixer/latest"
 
 Migration notes per provider: [allratestoday.com/migrate](https://allratestoday.com/migrate/).
 
-## Static JSON on a CDN
+## Static JSON files
 
-If you would rather not call an API at all, the same official tables are committed daily to the [central-bank-exchange-rates](https://github.com/AllRates-Today/central-bank-exchange-rates) repo and served by jsDelivr. No request limits, no key, works from a browser or a spreadsheet.
+If you would rather not call an API at all, the same official tables are committed daily to the [central-bank-exchange-rates](https://github.com/AllRates-Today/central-bank-exchange-rates) repo and served straight from GitHub. No key, CORS-enabled, works from a browser or a spreadsheet.
 
 ```bash
-curl -s https://cdn.jsdelivr.net/gh/AllRates-Today/central-bank-exchange-rates@main/data/ecb/latest.json
+curl -s https://raw.githubusercontent.com/AllRates-Today/central-bank-exchange-rates/main/data/ecb/latest.json
 ```
 
 ```
-=IMPORTDATA("https://cdn.jsdelivr.net/gh/AllRates-Today/central-bank-exchange-rates@main/data/ecb/history/2026.csv")
+=IMPORTDATA("https://raw.githubusercontent.com/AllRates-Today/central-bank-exchange-rates/main/data/ecb/history/2026.csv")
 ```
 
 The dataset is also mirrored on [Hugging Face](https://huggingface.co/datasets/AllRates/central-bank-exchange-rates) and [Kaggle](https://www.kaggle.com/datasets/allratestoday/central-bank-exchange-rates). The dataset is CC BY-NC 4.0; the API endpoints above are free for commercial use with attribution.
