@@ -163,7 +163,7 @@ curl -s https://raw.githubusercontent.com/AllRates-Today/central-bank-exchange-r
 =IMPORTDATA("https://raw.githubusercontent.com/AllRates-Today/central-bank-exchange-rates/main/data/ecb/history/2026.csv")
 ```
 
-The dataset is also mirrored on [Hugging Face](https://huggingface.co/datasets/AllRates/central-bank-exchange-rates) and [Kaggle](https://www.kaggle.com/datasets/allratestoday/central-bank-exchange-rates). The dataset is CC BY-NC 4.0; the API endpoints above are free for commercial use with attribution.
+The dataset is also mirrored on [Hugging Face](https://huggingface.co/datasets/AllRatesToday/central-bank-exchange-rates) and [Kaggle](https://www.kaggle.com/datasets/allratestoday/central-bank-exchange-rates). The dataset is CC BY-NC 4.0; the API endpoints above are free for commercial use with attribution.
 
 ## AI agents and MCP
 
