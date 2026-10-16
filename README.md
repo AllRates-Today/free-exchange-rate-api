@@ -68,11 +68,13 @@ That's it. No sign-up, no key, no card.
 | Latest official table of any of the 124 institutions | ✅ | |
 | One pair from that table (cross-computed inside the table, flagged `derived`) | ✅ | |
 | ECB-based drop-in endpoints (Frankfurter, exchangeratesapi, Fixer, exchangerate.host shapes), **including dates and ranges** | ✅ | |
-| Daily Reference Rate, one fixed mid-market table per business day (16:00 London) | ✅ | past dates |
+| Daily Reference Rate, one fixed mid-market table per business day (16:00 London) | ✅ | |
 | Commercial-bank counter boards (UAE, Vietnam, Sri Lanka, India, Indonesia, Armenia) | ✅ | |
 | Hosted MCP server for AI agents | ✅ | |
-| Dated central-bank tables, history series, cross-bank comparison, publication calendars | | 🔑 |
-| Real-time mid-market rates for 160+ currencies | | 🔑 |
+| Latest central-bank tables in CSV, XML and XLSX, cross-bank comparison, publication calendars | | 🔑 |
+| Real-time mid-market rates for 160+ currencies, and their history | | 🔑 |
+
+Dated central-bank tables (`/api/v1/central-bank/{bank}/{date}`), central-bank history series and past Daily Reference Rate tables are on paid plans. For ECB rates on past dates without a key, use the drop-in endpoints above, which serve dates and ranges keyless.
 
 The free key gives 300 requests with no expiry and no card: [allratestoday.com/register](https://allratestoday.com/register). AI agents can self-issue a 100-call trial key without an account (see [AI agents and MCP](#ai-agents-and-mcp)).
 
@@ -231,13 +233,26 @@ Per-bank zero-dependency npm packages exist for every institution, for example [
 
 Register at [allratestoday.com/register](https://allratestoday.com/register) for a free key with 300 requests, no card. It unlocks:
 
-- the table any institution had in force on a **past date**, with weekend and holiday roll-back
-- **history** series per pair, and CSV, XML and XLSX output on every table endpoint
+- **real-time mid-market** rates for 160+ currencies, and their **history** (`/api/historical-rates`)
+- CSV, XML and XLSX output on the latest central-bank tables
 - **cross-bank comparison** of one pair across every institution
-- **real-time mid-market** rates for 160+ currencies
+- **publication calendars** per institution
 
 ```bash
-curl -H "Authorization: Bearer art_live_..." "https://allratestoday.com/api/v1/central-bank/ecb/2026-09-01?source=USD&target=EUR"
+curl -H "Authorization: Bearer art_live_..." "https://allratestoday.com/api/historical-rates?source=USD&target=EUR&period=30d"
+```
+
+ECB rates for a past date or a range need no key at all:
+
+```bash
+curl "https://allratestoday.com/api/compat/frankfurter/2026-09-01?from=USD&to=EUR"
+curl "https://allratestoday.com/api/compat/frankfurter/2026-08-01..2026-08-31?from=USD&to=EUR"
+```
+
+The table any institution had in force on a **past date** (with weekend and holiday roll-back), central-bank **history** series and past Daily Reference Rate tables need a paid plan:
+
+```bash
+curl -H "Authorization: Bearer art_live_..." "https://allratestoday.com/api/v1/central-bank/ecb/2026-09-01?source=USD&target=EUR"   # paid plans
 ```
 
 Paid plans start at €4.99 a month: [allratestoday.com/pricing](https://allratestoday.com/pricing/).
