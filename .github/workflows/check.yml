@@ -17,3 +17,8 @@ jobs:
         run: curl -sf "https://allratestoday.com/api/open/central-banks" | grep -q '"code":"ecb"'
       - name: Frankfurter-shape endpoint is served keyless
         run: curl -sf "https://allratestoday.com/api/compat/frankfurter/latest?from=USD&to=EUR" | grep -q '"EUR"'
+      - name: ECB dates and ranges are served keyless
+        run: |
+          set -e
+          curl -sf "https://allratestoday.com/api/compat/frankfurter/2026-09-01?from=USD&to=EUR" | grep -q '"EUR"'
+          curl -sf "https://allratestoday.com/api/compat/frankfurter/2026-08-01..2026-08-31?from=USD&to=EUR" | grep -q '"start_date"'

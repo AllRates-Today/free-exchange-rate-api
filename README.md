@@ -72,9 +72,9 @@ That's it. No sign-up, no key, no card.
 | Commercial-bank counter boards (UAE, Vietnam, Sri Lanka, India, Indonesia, Armenia) | ✅ | |
 | Hosted MCP server for AI agents | ✅ | |
 | Latest central-bank tables in CSV, XML and XLSX, cross-bank comparison, publication calendars | | 🔑 |
-| Real-time mid-market rates for 160+ currencies, and their history | | 🔑 |
+| Real-time mid-market rates for 160+ currencies (latest only) | | 🔑 |
 
-Dated central-bank tables (`/api/v1/central-bank/{bank}/{date}`), central-bank history series and past Daily Reference Rate tables are on paid plans. For ECB rates on past dates without a key, use the drop-in endpoints above, which serve dates and ranges keyless.
+All history and dated rates are on paid plans: mid-market history (`/api/historical-rates`, and `/api/v1/rates` with `time` or `from`/`to`), dated central-bank tables (`/api/v1/central-bank/{bank}/{date}`), central-bank history series and past Daily Reference Rate tables. Free and trial keys get `403 historical_requires_paid_plan`. For ECB rates on past dates without a key, use the drop-in endpoints above, which serve dates and ranges keyless.
 
 The free key gives 300 requests with no expiry and no card: [allratestoday.com/register](https://allratestoday.com/register). AI agents can self-issue a 100-call trial key without an account (see [AI agents and MCP](#ai-agents-and-mcp)).
 
@@ -169,7 +169,7 @@ The dataset is also mirrored on [Hugging Face](https://huggingface.co/datasets/A
 
 ## AI agents and MCP
 
-A hosted [MCP](https://modelcontextprotocol.io/) server runs at `https://allratestoday.com/api/mcp` (Streamable HTTP, stateless, keyless). Eleven tools: live and official rates, history, cross-bank comparison, publication calendars, the Daily Reference Rate, and `request_trial_key`, which lets an agent self-issue a 100-call, 7-day key with no account.
+A hosted [MCP](https://modelcontextprotocol.io/) server runs at `https://allratestoday.com/api/mcp` (Streamable HTTP, stateless, keyless). Eleven tools: live and official rates, history (paid plans), cross-bank comparison, publication calendars, the Daily Reference Rate, and `request_trial_key`, which lets an agent self-issue a 100-call, 7-day key with no account.
 
 ```json
 { "mcpServers": { "allratestoday": { "url": "https://allratestoday.com/api/mcp" } } }
@@ -233,13 +233,15 @@ Per-bank zero-dependency npm packages exist for every institution, for example [
 
 Register at [allratestoday.com/register](https://allratestoday.com/register) for a free key with 300 requests, no card. It unlocks:
 
-- **real-time mid-market** rates for 160+ currencies, and their **history** (`/api/historical-rates`)
+- **real-time mid-market** rates for 160+ currencies (latest; history is paid)
 - CSV, XML and XLSX output on the latest central-bank tables
 - **cross-bank comparison** of one pair across every institution
 - **publication calendars** per institution
 
+The keyed `/api/v1/*` endpoints send no CORS headers: call them from your server, never with the key in browser code.
+
 ```bash
-curl -H "Authorization: Bearer art_live_..." "https://allratestoday.com/api/historical-rates?source=USD&target=EUR&period=30d"
+curl -H "Authorization: Bearer art_live_..." "https://allratestoday.com/api/v1/rates?source=USD&target=EUR,GBP"
 ```
 
 ECB rates for a past date or a range need no key at all:
@@ -249,9 +251,10 @@ curl "https://allratestoday.com/api/compat/frankfurter/2026-09-01?from=USD&to=EU
 curl "https://allratestoday.com/api/compat/frankfurter/2026-08-01..2026-08-31?from=USD&to=EUR"
 ```
 
-The table any institution had in force on a **past date** (with weekend and holiday roll-back), central-bank **history** series and past Daily Reference Rate tables need a paid plan:
+Mid-market **history** (`/api/historical-rates`, `/api/v1/rates` with `time` or `from`/`to`; ranges up to 366 days per request), the table any institution had in force on a **past date** (with weekend and holiday roll-back), central-bank **history** series and past Daily Reference Rate tables need a paid plan:
 
 ```bash
+curl -H "Authorization: Bearer art_live_..." "https://allratestoday.com/api/historical-rates?source=USD&target=EUR&period=30d"     # paid plans
 curl -H "Authorization: Bearer art_live_..." "https://allratestoday.com/api/v1/central-bank/ecb/2026-09-01?source=USD&target=EUR"   # paid plans
 ```
 
