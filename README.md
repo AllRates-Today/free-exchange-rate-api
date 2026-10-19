@@ -267,6 +267,14 @@ Paid plans start at €4.99 a month: [allratestoday.com/pricing](https://allrate
 - The Daily Reference Rate is AllRatesToday's own calculation, not a registered benchmark. See the [methodology](https://allratestoday.com/reference-rate/) before using it contractually.
 - Status page: [allratestoday.com/status](https://allratestoday.com/status). Data sources register: [allratestoday.com/data-sources](https://allratestoday.com/data-sources/).
 
+## Links
+
+- [API Documentation](https://allratestoday.com/developers)
+- [Register (Free)](https://allratestoday.com/register)
+- [Dashboard](https://allratestoday.com/profile)
+- [Status](https://allratestoday.com/status)
+- [GitHub](https://github.com/AllRates-Today/free-exchange-rate-api)
+
 ## License
 
 The examples in this repository are MIT licensed. The data is subject to the terms above.
