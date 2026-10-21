@@ -106,6 +106,7 @@ All open endpoints are `GET`, return JSON, allow any origin (CORS `*`), and are 
 
 | Endpoint | Returns |
 |:--|:--|
+| `/api/open/latest/{BASE}` | **The one-URL endpoint**: every ECB reference rate re-based to `{BASE}` (30 currencies, daily). Try `https://allratestoday.com/api/open/latest/USD` |
 | `/api/open/central-banks` | Every covered institution: `code`, `name`, `latest` publication date, `stale`, `cadence` |
 | `/api/open/central-bank/{code}` | The institution's latest published table: `rate_date`, `rates[]` with `base`, `quote`, `type`, `value` |
 | `/api/open/central-bank/{code}?source=X&target=Y` | One pair from that table; `derived: true` when cross-computed inside the table, `method` says how |
@@ -120,6 +121,12 @@ Response fields worth knowing:
 - `stale: true` means the institution is behind its usual schedule. The last table is still served.
 - `derived: true` means the pair was not published directly and was computed inside the same table (for example EUR/USD inverted to USD/EUR). `method` tells you which.
 - `attribution` carries the terms: free use with a visible link back to allratestoday.com where rates are shown.
+
+The link is the only condition of keyless use, commercial included. Paste this where the rates appear:
+
+```html
+<a href="https://allratestoday.com">Exchange rates by AllRatesToday</a>
+```
 
 Base URL: `https://allratestoday.com`. Full reference: [allratestoday.com/docs](https://allratestoday.com/docs/#central-bank).
 
