@@ -18,7 +18,7 @@
 
 ## Overview
 
-[AllRatesToday](https://allratestoday.com/) publishes the exchange-rate tables of **121 central banks and 3 tax authorities** (ECB, Federal Reserve, Bank of England, RBI, PBoC, HMRC, US Treasury, Swiss BAZG and more), each with the institution's own publication date. The **latest table of every institution is free and keyless**, served from Cloudflare's edge, with CORS open.
+[AllRatesToday](https://allratestoday.com/) publishes the exchange-rate tables of **[122 central banks and 4 tax authorities](https://allratestoday.com/central-bank-rates-api/institutions/)** (ECB, Federal Reserve, Bank of England, RBI, PBoC, HMRC, US Treasury, Swiss BAZG and more), each with the institution's own publication date. The **latest table of every institution is free and keyless**, served from Cloudflare's edge, with CORS open.
 
 This repo is the front door to that free surface: what is keyless, what the responses look like, and drop-in replacements for the free APIs that have shut down or gone paid.
 
@@ -65,7 +65,7 @@ That's it. No sign-up, no key, no card.
 
 | | Keyless, free | Needs a free key |
 |:--|:--|:--|
-| Latest official table of any of the 124 institutions | ✅ | |
+| Latest official table of any of the [126 institutions](https://allratestoday.com/central-bank-rates-api/institutions/) | ✅ | |
 | One pair from that table (cross-computed inside the table, flagged `derived`) | ✅ | |
 | ECB-based drop-in endpoints (Frankfurter, exchangeratesapi, Fixer, exchangerate.host shapes), **including dates and ranges** | ✅ | |
 | Daily Reference Rate, one fixed mid-market table per business day (16:00 London) | ✅ | |
