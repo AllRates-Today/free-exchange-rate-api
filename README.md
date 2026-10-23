@@ -76,7 +76,7 @@ That's it. No sign-up, no key, no card.
 
 All history and dated rates are on paid plans: mid-market history (`/api/historical-rates`, and `/api/v1/rates` with `time` or `from`/`to`), dated central-bank tables (`/api/v1/central-bank/{bank}/{date}`), central-bank history series and past Daily Reference Rate tables. Free and trial keys get `403 historical_requires_paid_plan`. For ECB rates on past dates without a key, use the drop-in endpoints above, which serve dates and ranges keyless.
 
-The free key gives 300 requests with no expiry and no card: [allratestoday.com/register](https://allratestoday.com/register). AI agents can self-issue a 100-call trial key without an account (see [AI agents and MCP](#ai-agents-and-mcp)).
+The free key has no expiry and needs no card: [allratestoday.com/register](https://allratestoday.com/register). AI agents can self-issue a 100-call trial key without an account (see [AI agents and MCP](#ai-agents-and-mcp)).
 
 ## Quick start
 
@@ -238,7 +238,7 @@ Per-bank zero-dependency npm packages exist for every institution, for example [
 
 ## When you need a key
 
-Register at [allratestoday.com/register](https://allratestoday.com/register) for a free key with 300 requests, no card. It unlocks:
+Register at [allratestoday.com/register](https://allratestoday.com/register) for a free key, no card. It unlocks:
 
 - **real-time mid-market** rates for 160+ currencies (latest; history is paid)
 - CSV, XML and XLSX output on the latest central-bank tables
