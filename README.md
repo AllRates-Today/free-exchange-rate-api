@@ -280,6 +280,7 @@ Paid plans start at €4.99 a month: [allratestoday.com/pricing](https://allrate
 - [Register (Free)](https://allratestoday.com/register)
 - [Dashboard](https://allratestoday.com/profile)
 - [Status](https://allratestoday.com/status)
+- [Postman collection](https://allratestoday.com/postman/)
 - [GitHub](https://github.com/AllRates-Today/free-exchange-rate-api)
 
 ## License
