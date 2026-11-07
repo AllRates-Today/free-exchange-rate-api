@@ -2,11 +2,11 @@
 
 # Free Exchange Rate API
 
-**Official central-bank exchange rates, keyless and free. No sign-up, no API key, no rate limit on the open endpoints.**
+**Official central-bank exchange rates, keyless and free. No sign-up, no API key, no quota on the open endpoints.**
 
 [![API status](https://img.shields.io/badge/API-online-brightgreen)](https://allratestoday.com/status)
 [![Keyless check](https://github.com/AllRates-Today/free-exchange-rate-api/actions/workflows/check.yml/badge.svg)](https://github.com/AllRates-Today/free-exchange-rate-api/actions/workflows/check.yml)
-[![Central banks](https://img.shields.io/badge/central%20banks-121-blue)](https://allratestoday.com/central-bank-rates-api/)
+[![Central banks](https://img.shields.io/badge/central%20banks-123-blue)](https://allratestoday.com/central-bank-rates-api/)
 [![Tax authorities](https://img.shields.io/badge/tax%20authorities-3-blue)](https://allratestoday.com/tax-authority-rates-api/)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
@@ -18,7 +18,7 @@
 
 ## Overview
 
-[AllRatesToday](https://allratestoday.com/) publishes the exchange-rate tables of **[122 central banks and 4 tax authorities](https://allratestoday.com/central-bank-rates-api/institutions/)** (ECB, Federal Reserve, Bank of England, RBI, PBoC, HMRC, US Treasury, Swiss BAZG and more), each with the institution's own publication date. The **latest table of every institution is free and keyless**, served from Cloudflare's edge, with CORS open.
+[AllRatesToday](https://allratestoday.com/) publishes the exchange-rate tables of **[123 central banks and 6 tax authorities](https://allratestoday.com/central-bank-rates-api/institutions/)** (ECB, Federal Reserve, Bank of England, RBI, PBoC, HMRC, US Treasury, Swiss BAZG and more), each with the institution's own publication date. The **latest table of every institution is free and keyless**, served from Cloudflare's edge, with CORS open.
 
 This repo is the front door to that free surface: what is keyless, what the responses look like, and drop-in replacements for the free APIs that have shut down or gone paid.
 
@@ -65,9 +65,9 @@ That's it. No sign-up, no key, no card.
 
 | | Keyless, free | Needs a free key |
 |:--|:--|:--|
-| Latest official table of any of the [126 institutions](https://allratestoday.com/central-bank-rates-api/institutions/) | ✅ | |
+| Latest official table of any of the [129 institutions](https://allratestoday.com/central-bank-rates-api/institutions/) | ✅ | |
 | One pair from that table (cross-computed inside the table, flagged `derived`) | ✅ | |
-| ECB-based drop-in endpoints (Frankfurter, exchangeratesapi, Fixer, exchangerate.host shapes), **including dates and ranges** | ✅ | |
+| ECB-based drop-in endpoints (Frankfurter, exchangeratesapi, Fixer, exchangerate.host, fawazahmed0 currency-api shapes), **including dates and ranges** | ✅ | |
 | Daily Reference Rate, one fixed mid-market table per business day (16:00 London) | ✅ | |
 | Commercial-bank counter boards (UAE, Vietnam, Sri Lanka, India, Indonesia, Armenia) | ✅ | |
 | Hosted MCP server for AI agents | ✅ | |
@@ -132,7 +132,7 @@ Base URL: `https://allratestoday.com`. Full reference: [allratestoday.com/docs](
 
 ## Drop-in replacements for dead or paid APIs
 
-If your code was written against one of these providers, change the host and keep the code. The data behind all four is the ECB daily reference table. Dates and date ranges work and are keyless.
+If your code was written against one of these providers, change the host and keep the code. The data behind all five is the ECB daily reference table. Dates and date ranges work and are keyless.
 
 | Your code used | Point it at |
 |:--|:--|
@@ -140,6 +140,7 @@ If your code was written against one of these providers, change the host and kee
 | `api.exchangeratesapi.io` | `https://allratestoday.com/api/compat/exchangeratesapi` |
 | `data.fixer.io/api` | `https://allratestoday.com/api/compat/fixer` |
 | `api.exchangerate.host` | `https://allratestoday.com/api/compat/exchangerate-host` |
+| fawazahmed0 `currency-api` (jsDelivr / `currency-api.pages.dev`), as a fallback | `https://allratestoday.com/api/compat/currency-api` + the same `/{date}/v1/currencies/{code}.json` path ([guide](https://allratestoday.com/migrate/fawazahmed0-currency-api/)) |
 
 ```bash
 curl "https://allratestoday.com/api/compat/frankfurter/latest?from=USD&to=EUR,GBP"
