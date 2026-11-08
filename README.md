@@ -282,6 +282,7 @@ Paid plans start at €4.99 a month: [allratestoday.com/pricing](https://allrate
 - [Dashboard](https://allratestoday.com/profile)
 - [Status](https://allratestoday.com/status)
 - [Postman collection](https://allratestoday.com/postman/)
+- [SwaggerHub (OpenAPI reference)](https://app.swaggerhub.com/apis-docs/allratestoday/allratestoday-exchange-rate-central-bank-rates-api/2.2.0)
 - [ChatGPT app](https://chatgpt.com/plugins/plugin_asdk_app_6ae1e76098f48191a285ac3f5ab7a83b) — ask ChatGPT for live and official central bank rates
 - [GitHub](https://github.com/AllRates-Today/free-exchange-rate-api)
 
